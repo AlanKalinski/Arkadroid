@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ball : MonoBehaviour {
+public class BallTwo : MonoBehaviour {
 
     public float ballInitialVelocity = 600f;
     private Rigidbody rb;
@@ -13,7 +13,7 @@ public class Ball : MonoBehaviour {
 	}
 	
 	void Update () {
-        if (Input.GetButtonDown("Fire1") && ballInPlay == false)
+        if (Input.GetButtonDown("Fire2") && ballInPlay == false)
         {
             transform.parent = null;
             ballInPlay = true;

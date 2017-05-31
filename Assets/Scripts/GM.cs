@@ -76,8 +76,8 @@ public class GM : MonoBehaviour {
 
     void SetupPaddle()
     {
-        if (clonePaddleOne != null) clonePaddleOne = Instantiate(clonePaddleOne, new Vector3(0, -14.5f, 0), Quaternion.identity) as GameObject;
-        if (clonePaddleTwo != null) clonePaddleTwo = Instantiate(clonePaddleTwo, new Vector3(0, 14.5f, 0), Quaternion.identity) as GameObject;
+        if (clonePaddleOne != null) clonePaddleOne = Instantiate(paddleOne, new Vector3(0, -14.5f, 0), Quaternion.identity) as GameObject;
+        if (clonePaddleTwo != null) clonePaddleTwo = Instantiate(paddleTwo, new Vector3(0, 14.5f, 0), Quaternion.identity) as GameObject;
     }
 
 }
