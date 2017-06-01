@@ -35,14 +35,14 @@ public class GM : MonoBehaviour {
     {
         player1points++;
         updateScoreText();
-        LoseLife();
+        LoseLife(false);
     }
 
     public void pointForPlayer2()
     {
         player2points++;
         updateScoreText();
-        LoseLife();
+        LoseLife(true);
     }
 
     private void updateScoreText()
@@ -63,21 +63,25 @@ public class GM : MonoBehaviour {
         Application.LoadLevel(Application.loadedLevel);
     }
 
-    public void LoseLife()
+    public void LoseLife(bool isPlayerOne)
     {
-        Instantiate(deathParticles, clonePaddleOne.transform.position, Quaternion.identity);
-        Destroy(clonePaddleOne);
-
-        Instantiate(deathParticles, clonePaddleTwo.transform.position, Quaternion.identity);
-        Destroy(clonePaddleTwo);
-       
+        if (isPlayerOne)
+        {
+            Instantiate(deathParticles, clonePaddleOne.transform.position, Quaternion.identity);
+            Destroy(clonePaddleOne);
+        }
+        else
+        {
+            Instantiate(deathParticles, clonePaddleTwo.transform.position, Quaternion.identity);
+            Destroy(clonePaddleTwo);
+        }
         Invoke("SetupPaddle", resetDelay);
     }
 
     void SetupPaddle()
     {
-        if (clonePaddleOne != null) clonePaddleOne = Instantiate(paddleOne, new Vector3(0, -14.5f, 0), Quaternion.identity) as GameObject;
-        if (clonePaddleTwo != null) clonePaddleTwo = Instantiate(paddleTwo, new Vector3(0, 14.5f, 0), Quaternion.identity) as GameObject;
+        if (clonePaddleOne == null) clonePaddleOne = Instantiate(paddleOne, new Vector3(0, -14.5f, 0), Quaternion.identity) as GameObject;
+        if (clonePaddleTwo == null) clonePaddleTwo = Instantiate(paddleTwo, new Vector3(0, 14.5f, 0), Quaternion.identity) as GameObject;
     }
 
 }
